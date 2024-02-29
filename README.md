@@ -1,14 +1,6 @@
-# React + Vite
+# FastApi-ReactJS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-
-### beckend
+<h3>Для разработки:</h3>
 
 #### 1. Создать виртуальное окружения:
       python3 -m venv venv
@@ -23,3 +15,4 @@ Currently, two official plugins are available:
 #### localhost:
       http://127.0.0.1:8000/
 <hr>
+
