@@ -64,8 +64,8 @@ const AppHeader = () => {
       <Modal title="Basic Modal" open={modal} onCancel={() => setModal(false)} footer={null} title={false}>
         <CoinInfoModal coin={coin}/>
       </Modal>
-      <Drawer title="Add Asset" onClose={() => setDrawer(false)} open={drawer} width={600}>
-        <AddAssetForm/>
+      <Drawer title="Add Asset" onClose={() => setDrawer(false)} open={drawer} width={600} destroyOnClose>
+        <AddAssetForm onClose={() => setDrawer(false)}/>
       </Drawer>
     </Layout.Header>
     
