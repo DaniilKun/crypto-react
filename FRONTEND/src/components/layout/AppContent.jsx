@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from 'react'
-import { Layout } from 'antd';
-import { getAllUser } from '../../api/get';
+import { Layout, Typography } from 'antd';
+import { useCrypto } from '../../context/crypto-context';
+import PortfolioChart from '../PortfolioChart';
+import AssetsTable from '../AssetsTable';
 
 const contentStyle = {
   textAlign: 'center',
   minHeight: 'calc(100vh - 60px)',
   color: '#fff',
   backgroundColor: '#001529',
-  padding:'1rem'
+  padding: '1rem',
 };
 
 const AppContent = () => {
-// const [list, setList] = useState([])
-
-// useEffect(() => {
-//     getAllUser()
-//       .then(res => setList(res)) // Устанавливаем полученный список в состояние
-//       .catch(error => console.error('Error fetching users:', error));
-//   }, []);
+  const { assets, crypto } = useCrypto();
 
   return (
-<Layout.Content style={contentStyle}>
-  <div>
-  <h2>User List:</h2>
-        {/* <ul>
-          {list.map((user, index) => (
-            <li key={index}>{user.name}</li> // Предположим, что объект пользователя имеет свойство name
-          ))}
-        </ul> */}
-  </div>
-</Layout.Content>
-  )
-}
+    <Layout.Content style={contentStyle}>
+      <Typography.Title level={3} style={{ textAlign: 'left', color: '#fff' }}>
+        Portfolio:{' '}
+        {assets
+          .map((asset) => {
+            const coin = crypto.find((c) => c.id === asset.id);
+            return asset.amount * coin.price;
+          })
+          .reduce((acc, v) => (acc += v), 0)
+          .toFixed(2)}
+        $
+      </Typography.Title>
+      <PortfolioChart/>
+      <AssetsTable/>
+    </Layout.Content>
+  );
+};
 
-export default AppContent
+export default AppContent;
